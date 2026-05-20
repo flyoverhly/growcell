@@ -61,16 +61,18 @@
         }
     </style>
 </head>
-<body class="min-h-screen text-slate-800 p-4 lg:p-6 flex items-center justify-center font-sans">
+<body class="min-h-screen text-slate-800 p-3 sm:p-5 lg:p-8 flex items-center justify-center font-sans">
 
-    <div class="w-full max-w-7xl aspect-[16/9] min-h-[750px] bg-animeLight anime-border rounded-3xl shadow-neobrutalismLg p-6 flex flex-col justify-between relative overflow-hidden">
+    <!-- 主容器：移除 16:9 aspect 限制，改写为全平台响应式自适应容器 -->
+    <div class="w-full max-w-7xl min-h-screen lg:min-h-[800px] bg-animeLight anime-border rounded-3xl shadow-neobrutalismLg p-4 sm:p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden">
         
-        <!-- Decorative Background Elements -->
+        <!-- 装饰性背景星云 -->
         <div class="absolute -top-12 -right-12 w-48 h-48 bg-animeCyan opacity-20 rounded-full blur-2xl pointer-events-none"></div>
         <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-animePink opacity-25 rounded-full blur-3xl pointer-events-none"></div>
 
+        <!-- 头部导航与画像区 -->
         <div class="grid grid-cols-12 gap-4 items-center border-b-4 border-animeDark pb-4 relative z-10">
-            <div class="col-span-12 md:col-span-8 flex items-center space-x-4">
+            <div class="col-span-12 lg:col-span-8 flex items-center space-x-4">
                 <div class="w-16 h-16 bg-animePink rounded-2xl anime-border flex items-center justify-center shadow-neobrutalism rotate-[-3deg] shrink-0">
                     <svg viewBox="0 0 100 100" class="w-12 h-12 text-white animate-bounce">
                         <circle cx="50" cy="40" r="18" fill="white" stroke="#1E1B29" stroke-width="4"/>
@@ -81,15 +83,15 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="flex items-center space-x-2">
+                    <div class="flex flex-wrap items-center gap-2">
                         <span class="px-3 py-1 bg-animeYellow text-animeDark text-xs font-bold rounded-full anime-border shadow-neobrutalismSm uppercase tracking-wider">🌟 闪耀蜕变计划</span>
                         <span class="px-3 py-1 bg-animeCyan text-animeDark text-xs font-bold rounded-full anime-border shadow-neobrutalismSm">🔥 目标 3分20秒</span>
                     </div>
-                    <h1 class="text-3xl lg:text-4xl font-extrabold text-animeDark mt-1 tracking-tight">800米闪耀冲刺·九周系统动作秘籍</h1>
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-animeDark mt-1.5 tracking-tight">800米闪耀冲刺·九周系统动作秘籍</h1>
                 </div>
             </div>
             
-            <div class="col-span-12 md:col-span-4 bg-animeYellow anime-border rounded-2xl p-3 flex justify-between items-center shadow-neobrutalism rotate-[1deg]">
+            <div class="col-span-12 lg:col-span-4 bg-animeYellow anime-border rounded-2xl p-3 flex justify-between items-center shadow-neobrutalism rotate-[1deg]">
                 <div class="flex items-center space-x-2">
                     <div class="w-10 h-10 rounded-full bg-white anime-border flex items-center justify-center overflow-hidden">
                         <svg viewBox="0 0 100 100" class="w-8 h-8">
@@ -109,29 +111,29 @@
                 </div>
                 <div class="text-right border-l-2 border-animeDark/20 pl-3">
                     <p class="text-xs text-animeDark font-bold">初始成绩</p>
-                    <p class="text-lg font-black text-red-500">3分42秒</p>
+                    <p class="text-base sm:text-lg font-black text-red-500">3分42秒</p>
                 </div>
             </div>
         </div>
 
+        <!-- 双栏响应式排版 -->
         <div class="grid grid-cols-12 gap-6 mt-6 items-stretch flex-grow">
             
-            <!-- Left Side: Interactive Chibi Figures -->
+            <!-- 左侧栏：手办动作图鉴 -->
             <div class="col-span-12 lg:col-span-6 flex flex-col justify-between space-y-4">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-black text-animeDark flex items-center space-x-2">
+                    <h2 class="text-lg sm:text-xl font-black text-animeDark flex items-center space-x-2">
                         <span>🤸‍♀️ 核心专项训练动作图鉴</span>
-                        <span class="text-xs font-medium text-slate-500">(点击手办触发活力特写!)</span>
                     </h2>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 flex-grow">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-grow">
                     
-                    <!-- Card 1: Jogging -->
-                    <div onclick="showDetail('jog')" class="bg-white hover:bg-pink-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden">
+                    <!-- 卡片 1: 慢跑 -->
+                    <div onclick="showDetail('jog')" class="bg-white hover:bg-pink-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden min-h-[160px] active:scale-[0.98]">
                         <div class="absolute top-2 right-2 bg-animePink text-white text-[10px] px-2 py-0.5 rounded-full font-bold">基础耐力</div>
-                        <div class="flex justify-center items-center h-28">
-                            <svg viewBox="0 0 120 120" class="h-24 group-hover:scale-110 transition-transform duration-300">
+                        <div class="flex justify-center items-center h-24">
+                            <svg viewBox="0 0 120 120" class="h-20 group-hover:scale-110 transition-transform duration-300">
                                 <circle cx="60" cy="60" r="35" fill="#FFE8F0" class="group-hover:fill-pink-200" />
                                 <g transform="translate(10, 5)">
                                     <path d="M45 75 L30 95 L15 90" stroke="#FF5E97" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -155,11 +157,11 @@
                         </div>
                     </div>
 
-                    <!-- Card 2: Stairs -->
-                    <div onclick="showDetail('stairs')" class="bg-white hover:bg-yellow-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden">
+                    <!-- 卡片 2: 楼梯 -->
+                    <div onclick="showDetail('stairs')" class="bg-white hover:bg-yellow-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden min-h-[160px] active:scale-[0.98]">
                         <div class="absolute top-2 right-2 bg-animeYellow text-animeDark text-[10px] px-2 py-0.5 rounded-full font-bold">下肢爆发</div>
-                        <div class="flex justify-center items-center h-28">
-                            <svg viewBox="0 0 120 120" class="h-24 group-hover:scale-110 transition-transform duration-300">
+                        <div class="flex justify-center items-center h-24">
+                            <svg viewBox="0 0 120 120" class="h-20 group-hover:scale-110 transition-transform duration-300">
                                 <circle cx="60" cy="60" r="35" fill="#FFFBE5" class="group-hover:fill-yellow-200" />
                                 <path d="M15 95 L50 95 L50 70 L85 70 L85 45 L110 45" stroke="#1E1B29" stroke-width="4" stroke-linecap="round" fill="none"/>
                                 <g transform="translate(15, -5)">
@@ -180,11 +182,11 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: Sprint -->
-                    <div onclick="showDetail('sprint')" class="bg-white hover:bg-cyan-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden">
+                    <!-- 卡片 3: 冲刺 -->
+                    <div onclick="showDetail('sprint')" class="bg-white hover:bg-cyan-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden min-h-[160px] active:scale-[0.98]">
                         <div class="absolute top-2 right-2 bg-animeCyan text-animeDark text-[10px] px-2 py-0.5 rounded-full font-bold">极速突破</div>
-                        <div class="flex justify-center items-center h-28">
-                            <svg viewBox="0 0 120 120" class="h-24 group-hover:scale-110 transition-transform duration-300">
+                        <div class="flex justify-center items-center h-24">
+                            <svg viewBox="0 0 120 120" class="h-20 group-hover:scale-110 transition-transform duration-300">
                                 <circle cx="60" cy="60" r="35" fill="#E6FCFF" class="group-hover:fill-cyan-200" />
                                 <path d="M10 40 L30 40 M5 60 L25 60 M15 80 L35 80" stroke="#00F0FF" stroke-width="3" stroke-linecap="round"/>
                                 <g transform="translate(15, 0)">
@@ -206,11 +208,11 @@
                         </div>
                     </div>
 
-                    <!-- Card 4: Stretch -->
-                    <div onclick="showDetail('stretch')" class="bg-white hover:bg-purple-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden">
+                    <!-- 卡片 4: 拉伸 -->
+                    <div onclick="showDetail('stretch')" class="bg-white hover:bg-purple-50 cursor-pointer anime-border rounded-2xl p-3 flex flex-col justify-between shadow-neobrutalism transition-all group relative overflow-hidden min-h-[160px] active:scale-[0.98]">
                         <div class="absolute top-2 right-2 bg-animePurple text-white text-[10px] px-2 py-0.5 rounded-full font-bold">黄金防护</div>
-                        <div class="flex justify-center items-center h-28">
-                            <svg viewBox="0 0 120 120" class="h-24 group-hover:scale-110 transition-transform duration-300">
+                        <div class="flex justify-center items-center h-24">
+                            <svg viewBox="0 0 120 120" class="h-20 group-hover:scale-110 transition-transform duration-300">
                                 <circle cx="60" cy="60" r="35" fill="#F3E8FF" class="group-hover:fill-purple-200" />
                                 <g transform="translate(10, 10)">
                                     <path d="M10 85 L90 85" stroke="#1E1B29" stroke-width="3"/>
@@ -230,8 +232,8 @@
 
                 </div>
 
-                <!-- Live Dynamic Tip Box -->
-                <div id="tip-box" class="bg-animeDark text-white p-4 rounded-2xl border-2 border-white shadow-neobrutalism flex items-start space-x-3 transition-all duration-300">
+                <!-- 动态主教练贴士 -->
+                <div id="tip-box" class="bg-animeDark text-white p-4 rounded-2xl border-2 border-white shadow-neobrutalism flex items-start space-x-3 transition-all duration-300 mt-2">
                     <span class="text-2xl shrink-0">👩‍🏫</span>
                     <div>
                         <h4 class="font-bold text-xs text-animeCyan uppercase tracking-widest" id="tip-title">美少女主教练的专业叮嘱：</h4>
@@ -241,27 +243,27 @@
 
             </div>
 
-            <!-- Right Side: Training Phase Slider & Check-in Matrix -->
+            <!-- 右侧栏：训练进度与打卡系统 -->
             <div class="col-span-12 lg:col-span-6 flex flex-col justify-between space-y-4">
                 
-                <!-- Phase Header Selection -->
-                <div class="flex justify-between items-center bg-white anime-border rounded-2xl p-2 shadow-neobrutalismSm">
-                    <button onclick="switchPhase(1)" id="tab-1" class="phase-tab flex-1 py-2 text-xs font-black text-center rounded-xl bg-emerald-500 text-white transition-all">
+                <!-- 训练阶段切换导航 (优化移动端极佳的轻点间距) -->
+                <div class="flex flex-col sm:flex-row justify-between items-stretch bg-white anime-border rounded-2xl p-2 shadow-neobrutalismSm gap-2">
+                    <button onclick="switchPhase(1)" id="tab-1" class="phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl bg-emerald-500 text-white transition-all min-h-[48px] flex items-center justify-center active:scale-95">
                         🌱 I. 筑基期 (W1-W3)
                     </button>
-                    <button onclick="switchPhase(2)" id="tab-2" class="phase-tab flex-1 py-2 text-xs font-black text-slate-600 hover:text-animeDark text-center rounded-xl transition-all">
+                    <button onclick="switchPhase(2)" id="tab-2" class="phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-slate-600 hover:text-animeDark text-center rounded-xl transition-all min-h-[48px] flex items-center justify-center active:scale-95">
                         ⚡ II. 蜕变期 (W4-W6)
                     </button>
-                    <button onclick="switchPhase(3)" id="tab-3" class="phase-tab flex-1 py-2 text-xs font-black text-slate-600 hover:text-animeDark text-center rounded-xl transition-all">
+                    <button onclick="switchPhase(3)" id="tab-3" class="phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-slate-600 hover:text-animeDark text-center rounded-xl transition-all min-h-[48px] flex items-center justify-center active:scale-95">
                         🏆 III. 冲刺期 (W7-W9)
                     </button>
                 </div>
 
-                <!-- Dynamic Content Board -->
-                <div id="phase-board" class="bg-white anime-border rounded-2xl p-4 shadow-neobrutalism flex-grow flex flex-col justify-between transition-colors duration-500">
+                <!-- 周期训练数据看板 -->
+                <div id="phase-board" class="bg-white anime-border rounded-2xl p-4 shadow-neobrutalism flex-grow flex flex-col justify-between transition-all duration-300">
                     <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span id="phase-badge" class="px-3 py-1 text-xs font-bold bg-emerald-100/70 text-emerald-600 rounded-full">当前任务重点：有氧大心脏 + 关节激活</span>
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-2">
+                            <span id="phase-badge" class="px-3 py-1 text-xs font-bold bg-emerald-100/70 text-emerald-600 rounded-full w-fit">当前任务重点：有氧大心脏 + 关节激活</span>
                             <span class="text-xs text-slate-500 font-bold" id="phase-duration">周期：第 1 - 3 周</span>
                         </div>
                         <h3 class="text-lg font-black text-emerald-600 transition-colors duration-500" id="phase-title">第一阶段：基础心肺与平衡底子构建</h3>
@@ -270,52 +272,52 @@
                         </p>
                     </div>
 
-                    <!-- Compact Grid Schedule for current week -->
-                    <div class="grid grid-cols-3 gap-3 my-4 bg-slate-50 p-3 rounded-xl anime-border">
-                        <div class="text-center p-2 bg-white rounded-lg border border-slate-200">
+                    <!-- 本周训练计划卡片 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4 bg-slate-50 p-3 rounded-xl anime-border">
+                        <div class="text-center p-2.5 bg-white rounded-lg border border-slate-200 flex flex-col justify-center">
                             <span class="block text-[11px] font-black text-animePink">周二 (速度耐力)</span>
                             <p class="text-xs font-bold text-slate-700 mt-1" id="schedule-tue">400米 × 3组<br><span class="text-red-500 font-extrabold">1分40秒/组</span></p>
                         </div>
-                        <div class="text-center p-2 bg-white rounded-lg border border-slate-200">
+                        <div class="text-center p-2.5 bg-white rounded-lg border border-slate-200 flex flex-col justify-center">
                             <span class="block text-[11px] font-black text-animeYellow">周四 (力量爆发)</span>
                             <p class="text-xs font-bold text-slate-700 mt-1" id="schedule-thu">双阶楼梯冲刺<br><span class="text-animePurple font-extrabold">20秒 × 5组</span></p>
                         </div>
-                        <div class="text-center p-2 bg-white rounded-lg border border-slate-200">
+                        <div class="text-center p-2.5 bg-white rounded-lg border border-slate-200 flex flex-col justify-center">
                             <span class="block text-[11px] font-black text-animeCyan">周六 (专项节奏)</span>
                             <p class="text-xs font-bold text-slate-700 mt-1" id="schedule-sat">200米 × 5组<br><span class="text-red-500 font-extrabold">46-48秒/组</span></p>
                         </div>
                     </div>
 
-                    <!-- Compact Grid Tracker -->
+                    <!-- 打卡系统区域 (重点修改：完全重构触控间距，大面积按钮防误触) -->
                     <div>
-                        <div class="flex justify-between items-center mb-2">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-3">
                             <span class="text-xs font-extrabold text-animeDark flex items-center space-x-1">
                                 <span>📅 九周日常全景打卡看板</span>
                                 <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-[10px] font-bold" id="completion-rate">已完成: 0%</span>
                             </span>
-                            <button onclick="resetTracker()" class="text-[10px] text-red-500 hover:underline font-bold">
+                            <button onclick="resetTracker()" class="text-[11px] text-red-500 hover:text-red-600 font-bold w-fit flex items-center gap-1 min-h-[36px]">
                                 <i class="fa-solid fa-rotate-left"></i> 重置所有记录
                             </button>
                         </div>
                         
-                        <!-- 9 Weeks Grid Tracker -->
-                        <div class="grid grid-cols-9 gap-1.5" id="tracker-grid">
-                            <!-- Dynamic check-in boxes render here -->
+                        <!-- 9周网格：在移动端采用1-3列布局，大按钮设计，手持点击极度流畅 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-9 gap-3" id="tracker-grid">
+                            <!-- 由 JS 渲染高灵敏度、宽间距、44px 的打卡单元 -->
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Bottom Action Tips and Runner Test Link -->
-                <div class="grid grid-cols-12 gap-3 items-center">
-                    <div class="col-span-8 bg-animeCyan/10 anime-border rounded-xl p-3 flex items-center space-x-2">
-                        <span class="text-lg">🥤</span>
+                <!-- 底部能量补给指示 -->
+                <div class="grid grid-cols-12 gap-3 items-stretch">
+                    <div class="col-span-12 sm:col-span-8 bg-animeCyan/10 anime-border rounded-xl p-3 flex items-center space-x-2">
+                        <span class="text-lg shrink-0">🥤</span>
                         <p class="text-[11px] text-slate-700 leading-snug">
                             <strong class="text-animeDark font-black block">元气补给站 (专为13岁女孩)：</strong>
                             每周三次训练后30分钟内，及时补充一杯牛奶+一个水煮蛋，能超强加速肌肉重塑！
                         </p>
                     </div>
-                    <button onclick="triggerSimulatedTest()" class="col-span-4 h-full bg-animePink text-white font-black text-sm rounded-xl anime-border shadow-neobrutalismSm hover:translate-y-[-2px] hover:shadow-neobrutalism transition-all flex flex-col justify-center items-center">
+                    <button onclick="triggerSimulatedTest()" class="col-span-12 sm:col-span-4 bg-animePink text-white font-black text-sm rounded-xl anime-border shadow-neobrutalismSm hover:translate-y-[-2px] hover:shadow-neobrutalism transition-all flex flex-col justify-center items-center p-3 min-h-[64px] active:scale-95">
                         <span>⏱️ 赛道测试模拟</span>
                         <span class="text-[9px] text-yellow-200 font-normal mt-0.5">见证你的速度上限</span>
                     </button>
@@ -325,18 +327,41 @@
 
         </div>
 
-        <!-- Footer Note -->
-        <div class="flex justify-between items-center text-[11px] text-slate-500 border-t border-slate-200 pt-3 mt-4">
+        <!-- 页脚声明 -->
+        <div class="flex flex-col sm:flex-row justify-between items-center text-[11px] text-slate-500 border-t border-slate-200 pt-3 mt-4 gap-2">
             <p>※ 本计划专为13.5岁女孩量身定制，请务必在热身充足的前提下进行训练，安全第一。</p>
-            <p class="font-extrabold text-animeDark">⚡ 步步踏实，冲破3分20秒！</p>
+            <p class="font-extrabold text-animeDark flex items-center gap-1">⚡ 步步踏实，冲破3分20秒！</p>
         </div>
 
     </div>
 
-    <!-- Custom Modal for Test Simulation -->
+    <!-- 🌟 全新设计：每次打卡随机触发的元气鼓励弹窗 (全自动平滑关闭) -->
+    <div id="encouragement-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-animeDark/80 backdrop-blur-sm pointer-events-none opacity-0 transition-all duration-300 hidden">
+        <div id="encouragement-card" class="bg-white border-4 border-animeDark p-6 rounded-[2rem] shadow-neobrutalismLg text-center flex flex-col items-center justify-center max-w-sm w-full transform scale-90 transition-all duration-300 relative overflow-hidden">
+            <!-- 能量波纹底板 -->
+            <div class="absolute -top-6 -left-6 w-16 h-16 bg-animeYellow opacity-20 rounded-full blur-xl"></div>
+            <div class="absolute -bottom-6 -right-6 w-16 h-16 bg-animePink opacity-20 rounded-full blur-xl"></div>
+            
+            <!-- 动态微动画展现区 -->
+            <div id="encourage-svg-container" class="w-32 h-32 flex items-center justify-center mb-4 text-animePink">
+                <!-- SVG 将在此处注入 -->
+            </div>
+            
+            <!-- 燃力称号与文案 -->
+            <h3 id="encourage-title" class="text-2xl font-black text-animeDark tracking-tight text-stroke">元气爆发！</h3>
+            <p id="encourage-msg" class="text-sm text-slate-600 font-bold mt-2 leading-relaxed px-2"></p>
+            
+            <!-- 热血徽章 -->
+            <div class="mt-4 px-4 py-1.5 bg-animeYellow text-animeDark font-black text-xs rounded-full border-2 border-animeDark shadow-neobrutalismSm rotate-[-2deg]">
+                🏃‍♀️ 突破3分20秒 功力+1 !
+            </div>
+        </div>
+    </div>
+
+    <!-- 赛道测试沙盘模拟 Modals -->
     <div id="test-modal" class="fixed inset-0 bg-animeDark/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-animeLight w-full max-w-lg anime-border rounded-3xl p-6 shadow-neobrutalismLg relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-animeDark hover:text-animePink text-2xl font-black">
+        <div class="bg-animeLight w-full max-w-lg anime-border rounded-3xl p-6 shadow-neobrutalismLg relative m-2">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-animeDark hover:text-animePink text-2xl font-black min-w-[44px] min-h-[44px] flex items-center justify-center">
                 <i class="fa-solid fa-circle-xmark"></i>
             </button>
             <div class="text-center">
@@ -369,16 +394,17 @@
             </div>
 
             <div class="flex space-x-3">
-                <button onclick="runSimulation()" class="flex-1 py-3 bg-animePink text-white font-black rounded-xl anime-border shadow-neobrutalismSm hover:translate-y-[-2px] transition-all">
+                <button onclick="runSimulation()" class="flex-1 py-3.5 bg-animePink text-white font-black rounded-xl anime-border shadow-neobrutalismSm hover:translate-y-[-2px] transition-all min-h-[48px] active:scale-95">
                     🏁 鸣枪！开始模拟测试
                 </button>
-                <button onclick="closeModal()" class="px-4 py-3 bg-slate-200 text-slate-700 font-bold rounded-xl anime-border hover:bg-slate-300 transition-all">
+                <button onclick="closeModal()" class="px-4 py-3.5 bg-slate-200 text-slate-700 font-bold rounded-xl anime-border hover:bg-slate-300 transition-all min-h-[48px] active:scale-95">
                     返回
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- 核心运行逻辑 -->
     <script>
         let currentPhase = 1;
         const totalWeeks = 9;
@@ -451,6 +477,15 @@
             }
         };
 
+        // 少女运动专属打卡金句库
+        const animeEncouragements = [
+            { title: "美少女气场爆棚！", msg: "今天的训练汗水，都会化作你在跑道上飞驰的魔法燃料！安安太棒啦！" },
+            { title: "乳酸大作战大胜利！", msg: "双腿感觉酸胀？这正是大腿肌肉在悄悄重组、变得更强韧的标志！" },
+            { title: "撕裂风阻的跑速！", msg: "摆臂像刀锋般利落，步伐像小羚羊般灵动！你刚才冲线的一幕帅极了！" },
+            { title: "肺活量能量储蓄+100！", msg: "吸气、呼气、稳扎稳打！每一米坚实的步伐，都在缩短你与3分20秒的距离！" },
+            { title: "黄金营养补充时刻！", msg: "完美收工！在接下来的30分钟内补充蛋白，你的肌肉正在渴望成长呢！" }
+        ];
+
         let trackerState = JSON.parse(localStorage.getItem('girl_800m_tracker')) || Array(totalWeeks * daysPerWeek).fill(false);
 
         window.onload = function() {
@@ -459,29 +494,66 @@
             updateProgressBar();
         };
 
+        // 1. 起跑哨声与 8-bit 和弦合成器
+        function playAthleticEncourageSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (!audioCtx) return;
+                
+                // 第一声：清脆起跑
+                const osc1 = audioCtx.createOscillator();
+                const gain1 = audioCtx.createGain();
+                osc1.type = 'triangle';
+                osc1.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                osc1.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.12); // A5
+                gain1.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                
+                osc1.connect(gain1);
+                gain1.connect(audioCtx.destination);
+                osc1.start();
+                osc1.stop(audioCtx.currentTime + 0.28);
+                
+                // 第二声：星光亮起
+                setTimeout(() => {
+                    const osc2 = audioCtx.createOscillator();
+                    const gain2 = audioCtx.createGain();
+                    osc2.type = 'sine';
+                    osc2.frequency.setValueAtTime(1046.50, audioCtx.currentTime); // C6
+                    osc2.frequency.exponentialRampToValueAtTime(1567.98, audioCtx.currentTime + 0.08); // G6
+                    gain2.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                    gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.22);
+                    
+                    osc2.connect(gain2);
+                    gain2.connect(audioCtx.destination);
+                    osc2.start();
+                    osc2.stop(audioCtx.currentTime + 0.22);
+                }, 80);
+            } catch (e) {
+                console.warn('Audio contexts need gesture authorization.');
+            }
+        }
+
+        // 2. 切换核心训练模块
         function switchPhase(phaseNum) {
             currentPhase = phaseNum;
             const data = phaseData[phaseNum];
             
-            // 清理并更新标签色
             document.querySelectorAll('.phase-tab').forEach(tab => {
-                tab.className = "phase-tab flex-1 py-2 text-xs font-black text-center rounded-xl text-slate-600 hover:text-animeDark transition-all";
+                tab.className = "phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl text-slate-600 hover:text-animeDark transition-all min-h-[48px] flex items-center justify-center active:scale-95";
             });
             const activeTab = document.getElementById(`tab-${phaseNum}`);
-            activeTab.className = `phase-tab flex-1 py-2 text-xs font-black text-center rounded-xl text-white transition-all ${data.themeColor}`;
+            activeTab.className = `phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl text-white transition-all min-h-[48px] flex items-center justify-center active:scale-95 ${data.themeColor}`;
 
-            // 柔和动态底色
             const board = document.getElementById('phase-board');
-            board.className = `${data.boardBg} anime-border rounded-2xl p-4 shadow-neobrutalism flex-grow flex flex-col justify-between transition-colors duration-500`;
+            board.className = `${data.boardBg} anime-border rounded-2xl p-4 shadow-neobrutalism flex-grow flex flex-col justify-between transition-all duration-300`;
 
-            // 配速徽章配色切换
             const badge = document.getElementById('phase-badge');
             badge.innerText = data.badge;
-            badge.className = `px-3 py-1 text-xs font-bold rounded-full transition-colors duration-500 ${data.themeBgLight} ${data.themeText}`;
+            badge.className = `px-3 py-1 text-xs font-bold rounded-full transition-colors duration-500 w-fit ${data.themeBgLight} ${data.themeText}`;
 
             document.getElementById('phase-duration').innerText = data.duration;
             
-            // 标题文本配色切换
             const title = document.getElementById('phase-title');
             title.innerText = data.title;
             title.className = `text-lg font-black transition-colors duration-500 ${data.themeText}`;
@@ -495,32 +567,36 @@
             highlightWeeksForPhase(phaseNum);
         }
 
+        // 3. 渲染高触感、宽间距、44px 的打卡面板 (重点修改 2)
         function renderTracker() {
             const grid = document.getElementById('tracker-grid');
             grid.innerHTML = '';
             
             for (let week = 1; week <= totalWeeks; week++) {
                 const weekContainer = document.createElement('div');
-                weekContainer.className = "flex flex-col space-y-1 bg-white border border-slate-200 p-1.5 rounded-lg text-center shadow-sm relative transition-all";
+                weekContainer.className = "flex flex-col space-y-2 bg-white border-2 border-animeDark p-3 rounded-2xl text-center shadow-neobrutalismSm relative transition-all";
                 weekContainer.id = `week-box-${week}`;
                 
                 const label = document.createElement('span');
-                label.className = "text-[9px] font-black text-slate-400 block mb-1";
-                label.innerText = `W${week}`;
+                label.className = "text-[11px] font-black text-slate-400 block";
+                label.innerText = `Week ${week}`;
                 weekContainer.appendChild(label);
 
                 const daysRow = document.createElement('div');
-                daysRow.className = "flex justify-around space-x-0.5";
+                daysRow.className = "flex justify-center gap-2";
 
                 for (let day = 0; day < daysPerWeek; day++) {
                     const globalIdx = (week - 1) * daysPerWeek + day;
                     const isChecked = trackerState[globalIdx];
                     
                     const dayBtn = document.createElement('button');
-                    dayBtn.className = `w-4 h-4 rounded-full border border-animeDark text-[8px] font-black flex items-center justify-center transition-all ${
-                        isChecked ? 'bg-green-400 text-animeDark scale-110 shadow-neobrutalismSm' : 'bg-slate-100 text-transparent hover:bg-slate-200'
+                    // 完全满足 44px * 44px 的高精度防误触打卡按钮
+                    dayBtn.className = `w-11 h-11 rounded-xl border-2 border-animeDark text-xs font-black flex items-center justify-center transition-all active:scale-95 cursor-pointer ${
+                        isChecked 
+                            ? 'bg-emerald-400 text-animeDark rotate-3 shadow-neobrutalismSm font-black' 
+                            : 'bg-slate-50 text-slate-400 hover:bg-slate-200 hover:text-slate-600'
                     }`;
-                    dayBtn.innerHTML = '✔';
+                    dayBtn.innerHTML = isChecked ? '<i class="fa-solid fa-check"></i>' : (day + 1);
                     dayBtn.title = `第${week}周 - 训练日${day + 1}`;
                     dayBtn.onclick = () => toggleDay(globalIdx);
                     
@@ -532,19 +608,110 @@
             }
         }
 
+        // 4. 执行打卡并激发动画 overlay (重点修改 3)
         function toggleDay(index) {
+            const wasChecked = trackerState[index];
             trackerState[index] = !trackerState[index];
             localStorage.setItem('girl_800m_tracker', JSON.stringify(trackerState));
+            
             renderTracker();
             updateProgressBar();
             highlightWeeksForPhase(currentPhase);
+            
+            // 只有在从未打卡状态切换到打卡成功时，才会触发鼓励特效
+            if (!wasChecked) {
+                playAthleticEncourageSound();
+                triggerDynamicEncouragement();
+                triggerConfetti();
+            }
         }
 
+        // 5. 随机生成跑步少女主题的微 SVG 动画并自动关闭
+        function triggerDynamicEncouragement() {
+            const overlay = document.getElementById('encouragement-overlay');
+            const card = document.getElementById('encouragement-card');
+            const svgContainer = document.getElementById('encourage-svg-container');
+            const titleElem = document.getElementById('encourage-title');
+            const msgElem = document.getElementById('encourage-msg');
+            
+            // 随机抽选一句中肯文案
+            const randIdx = Math.floor(Math.random() * animeEncouragements.length);
+            const data = animeEncouragements[randIdx];
+            titleElem.innerText = data.title;
+            msgElem.innerText = data.msg;
+            
+            // 4个元气满满的赛道手绘 SVG 动效库
+            const svgs = [
+                // 1. 速度跑鞋羽翼 (风驰电翼)
+                `<svg class="w-24 h-24 animate-bounce" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 70 L35 70 L40 55 L75 55 L85 70 L20 70 Z" fill="#FF5E97" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M40 55 L45 35 L65 35 L60 55" fill="#FFE0CC" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M48 40 L54 46 M50 46 L56 52" stroke="#1E1B29" stroke-width="3" stroke-linecap="round"/>
+                    <polygon points="15,40 18,45 15,50 12,45" fill="#FFD214" stroke="#1E1B29" stroke-width="1.5"/>
+                    <polygon points="80,30 83,33 80,36 77,33" fill="#00F0FF" stroke="#1E1B29" stroke-width="1.5"/>
+                </svg>`,
+                // 2. 极速冲刺萌版安安 (魔力冲线)
+                `<svg class="w-24 h-24 animate-[pulse_1s_infinite]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 50 Q50 35 90 50" stroke="#FF5E97" stroke-width="8" stroke-linecap="round" class="animate-pulse"/>
+                    <circle cx="50" cy="40" r="14" fill="#FFE0CC" stroke="#1E1B29" stroke-width="3"/>
+                    <path d="M38 32 Q50 20 62 32" fill="#FFD214" stroke="#1E1B29" stroke-width="2"/>
+                    <path d="M45 38 Q47 36 49 38" stroke="#1E1B29" stroke-width="2" fill="none"/>
+                    <path d="M51 38 Q53 36 55 38" stroke="#1E1B29" stroke-width="2" fill="none"/>
+                    <polygon points="50,10 53,20 63,20 55,27 58,37 50,30 42,37 45,27 37,20 47,20" fill="#FFD214" stroke="#1E1B29" stroke-width="2" class="animate-spin" style="transform-origin: 50px 25px;"/>
+                </svg>`,
+                // 3. 强心脏有氧火焰 (燃烧有氧)
+                `<svg class="w-24 h-24 animate-bounce" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 85 C15 55 15 25 50 15 C85 25 85 55 50 85 Z" fill="#7B2CBF" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M50 75 C25 50 25 30 50 25 C75 30 75 50 50 75 Z" fill="#FF5E97" stroke="#1E1B29" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M30 20 L35 10 M70 20 L65 10" stroke="#00F0FF" stroke-width="3" stroke-linecap="round"/>
+                </svg>`,
+                // 4. 终点王者金牌勋章 (荣耀加冕)
+                `<svg class="w-24 h-24 animate-[spin_3s_linear_infinite]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35 30 L20 80 L40 75 Z" fill="#FF5E97" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M65 30 L80 80 L60 75 Z" fill="#00F0FF" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
+                    <circle cx="50" cy="45" r="22" fill="#FFD214" stroke="#1E1B29" stroke-width="4"/>
+                    <text x="50" y="53" font-family="'Fredoka', sans-serif" font-weight="900" font-size="24" fill="#1E1B29" text-anchor="middle">1</text>
+                </svg>`
+            ];
+            svgContainer.innerHTML = svgs[Math.floor(Math.random() * svgs.length)];
+            
+            // 展示 Overlay
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.classList.remove('pointer-events-none');
+                card.classList.remove('scale-90');
+                card.classList.add('scale-100');
+            }, 30);
+            
+            // 2.5 秒后自行消退、顺滑淡出、释放下层点击权
+            setTimeout(() => {
+                overlay.classList.add('opacity-0');
+                overlay.classList.add('pointer-events-none');
+                card.classList.remove('scale-100');
+                card.classList.add('scale-90');
+                
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+            }, 2500);
+        }
+
+        // 6. 彩屑特效
+        function triggerConfetti() {
+            confetti({
+                particleCount: 120,
+                spread: 75,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // 7. 高亮显示本阶段涵盖的周度卡片
         function highlightWeeksForPhase(phaseNum) {
             for (let w = 1; w <= totalWeeks; w++) {
                 const el = document.getElementById(`week-box-${w}`);
                 if (el) {
-                    el.className = "flex flex-col space-y-1 bg-white border border-slate-200 p-1.5 rounded-lg text-center shadow-sm relative transition-all";
+                    el.className = "flex flex-col space-y-2 bg-white border-2 border-slate-200 p-3 rounded-2xl text-center shadow-sm relative transition-all";
                 }
             }
 
@@ -554,20 +721,26 @@
             for (let w = startWeek; w <= endWeek; w++) {
                 const el = document.getElementById(`week-box-${w}`);
                 if (el) {
-                    el.className = `flex flex-col space-y-1 bg-white border-2 ${data.themeBorder} p-1.5 rounded-lg text-center shadow-md relative transition-all scale-102 ring-2 ${data.themeRing}`;
+                    el.className = `flex flex-col space-y-2 bg-white border-3 ${data.themeBorder} p-3 rounded-2xl text-center shadow-neobrutalism relative transition-all scale-[1.02] ring-4 ${data.themeRing}`;
                 }
             }
         }
 
+        // 8. 进度率计算
         function updateProgressBar() {
             const checkedCount = trackerState.filter(Boolean).length;
             const percentage = Math.round((checkedCount / trackerState.length) * 100);
-            document.getElementById('completion-rate').innerText = `已完成: ${percentage}%`;
-            document.getElementById('completion-rate').className = percentage === 100 
-                ? "bg-green-500 text-white px-1.5 py-0.5 rounded text-[10px] font-bold animate-pulse" 
-                : "bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-[10px] font-bold";
+            const rateBadge = document.getElementById('completion-rate');
+            rateBadge.innerText = `已完成: ${percentage}%`;
+            
+            if (percentage === 100) {
+                rateBadge.className = "bg-green-500 text-white px-1.5 py-0.5 rounded text-[10px] font-bold animate-pulse";
+            } else {
+                rateBadge.className = "bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-[10px] font-bold";
+            }
         }
 
+        // 9. 侧边手办特写切换
         function showDetail(actionKey) {
             const box = document.getElementById('tip-box');
             const title = document.getElementById('tip-title');
@@ -578,21 +751,25 @@
             text.innerText = detail.text;
             
             box.classList.remove('bg-animeDark');
-            box.classList.add('bg-animePurple', 'scale-102');
+            box.classList.add('bg-animePurple', 'scale-[1.02]');
             setTimeout(() => {
-                box.classList.remove('bg-animePurple', 'scale-102');
+                box.classList.remove('bg-animePurple', 'scale-[1.02]');
                 box.classList.add('bg-animeDark');
             }, 300);
         }
 
+        // 10. 重置打卡
         function resetTracker() {
-            trackerState = Array(totalWeeks * daysPerWeek).fill(false);
-            localStorage.setItem('girl_800m_tracker', JSON.stringify(trackerState));
-            renderTracker();
-            updateProgressBar();
-            highlightWeeksForPhase(currentPhase);
+            if (confirm('确认要重置安安这九周所有的打卡轨迹吗？')) {
+                trackerState = Array(totalWeeks * daysPerWeek).fill(false);
+                localStorage.setItem('girl_800m_tracker', JSON.stringify(trackerState));
+                renderTracker();
+                updateProgressBar();
+                highlightWeeksForPhase(currentPhase);
+            }
         }
 
+        // 11. 实战沙盘模拟测试
         function triggerSimulatedTest() {
             document.getElementById('test-modal').classList.remove('hidden');
             
@@ -615,8 +792,8 @@
             runner.style.transition = 'left 2.5s cubic-bezier(0.4, 0, 0.2, 1)';
             runner.style.left = '90%';
 
-            const baseSec = 222; // 3m42s
-            const maxImprovement = 25; 
+            const baseSec = 222; // 3分42秒
+            const maxImprovement = 25; // 最多可提升25秒 (目标3分17秒左右)
             const improvement = Math.round(rate * maxImprovement);
             const finalSec = baseSec - improvement;
 
