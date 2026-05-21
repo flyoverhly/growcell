@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>800米闪耀冲刺计划 - 13.5岁女孩专属九周科学训练图</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome 字体图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入炫酷满屏彩屑动效库 -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -49,6 +53,33 @@
             transform: scale(1.03) translateY(-2px);
             transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        
+        /* 隐藏标准滚动条样式 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 专门为打卡滑块定制的炫酷霓虹滚动条 */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1E1B29;
+            border-radius: 999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #FF5E97;
+            border: 2px solid #1E1B29;
+            border-radius: 999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #FFD214;
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -63,7 +94,7 @@
 </head>
 <body class="min-h-screen text-slate-800 p-3 sm:p-5 lg:p-8 flex items-center justify-center font-sans">
 
-    <!-- 主容器：移除 16:9 aspect 限制，改写为全平台响应式自适应容器 -->
+    <!-- 主容器：全平台响应式自适应容器 -->
     <div class="w-full max-w-7xl min-h-screen lg:min-h-[800px] bg-animeLight anime-border rounded-3xl shadow-neobrutalismLg p-4 sm:p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden">
         
         <!-- 装饰性背景星云 -->
@@ -246,7 +277,7 @@
             <!-- 右侧栏：训练进度与打卡系统 -->
             <div class="col-span-12 lg:col-span-6 flex flex-col justify-between space-y-4">
                 
-                <!-- 训练阶段切换导航 (优化移动端极佳的轻点间距) -->
+                <!-- 训练阶段切换导航 -->
                 <div class="flex flex-col sm:flex-row justify-between items-stretch bg-white anime-border rounded-2xl p-2 shadow-neobrutalismSm gap-2">
                     <button onclick="switchPhase(1)" id="tab-1" class="phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl bg-emerald-500 text-white transition-all min-h-[48px] flex items-center justify-center active:scale-95">
                         🌱 I. 筑基期 (W1-W3)
@@ -268,7 +299,7 @@
                         </div>
                         <h3 class="text-lg font-black text-emerald-600 transition-colors duration-500" id="phase-title">第一阶段：基础心肺与平衡底子构建</h3>
                         <p class="text-xs text-slate-600 mt-1 leading-relaxed" id="phase-desc">
-                            这一阶段的绝对速度不是第一追求，重点在于能够不停下、均匀呼吸地完成有氧跑。配合大步距慢速楼梯，先把膝盖和踝关节周围的小肌群激活，预防由于直接上高强度导致胫骨酸痛。
+                            这一阶段的绝对速度不是第一追求，重点在于能够不停下、均匀呼吸地完成有氧跑。配合大步距慢速楼梯，先把膝盖 and 踝关节周围的小肌群激活，预防由于直接上高强度导致胫骨酸痛。
                         </p>
                     </div>
 
@@ -279,7 +310,7 @@
                             <p class="text-xs font-bold text-slate-700 mt-1" id="schedule-tue">400米 × 3组<br><span class="text-red-500 font-extrabold">1分40秒/组</span></p>
                         </div>
                         <div class="text-center p-2.5 bg-white rounded-lg border border-slate-200 flex flex-col justify-center">
-                            <span class="block text-[11px] font-black text-animeYellow">周四 (力量爆发)</span>
+                            <span class="block text-[11px] font-black text-animeYellow">周开力量爆发)</span>
                             <p class="text-xs font-bold text-slate-700 mt-1" id="schedule-thu">双阶楼梯冲刺<br><span class="text-animePurple font-extrabold">20秒 × 5组</span></p>
                         </div>
                         <div class="text-center p-2.5 bg-white rounded-lg border border-slate-200 flex flex-col justify-center">
@@ -288,11 +319,12 @@
                         </div>
                     </div>
 
-                    <!-- 打卡系统区域 (重点修改：完全重构触控间距，大面积按钮防误触) -->
+                    <!-- 打卡系统区域 -->
                     <div>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-3">
-                            <span class="text-xs font-extrabold text-animeDark flex items-center space-x-1">
-                                <span>📅 九周日常全景打卡看板</span>
+                            <span class="text-xs font-extrabold text-animeDark flex items-center space-x-1.5">
+                                <span>📅 全九周滑块轨道</span>
+                                <span class="text-[10px] text-animePink font-bold bg-animePink/10 px-2 py-0.5 rounded-full border border-animePink/20 animate-pulse">支持手指横滑 ↔️ 自动切页签</span>
                                 <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-[10px] font-bold" id="completion-rate">已完成: 0%</span>
                             </span>
                             <button onclick="resetTracker()" class="text-[11px] text-red-500 hover:text-red-600 font-bold w-fit flex items-center gap-1 min-h-[36px]">
@@ -300,9 +332,9 @@
                             </button>
                         </div>
                         
-                        <!-- 9周网格：在移动端采用1-3列布局，大按钮设计，手持点击极度流畅 -->
-                        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-9 gap-3" id="tracker-grid">
-                            <!-- 由 JS 渲染高灵敏度、宽间距、44px 的打卡单元 -->
+                        <!-- 全景网格滑块容器 -->
+                        <div class="flex overflow-x-auto gap-4 py-3 px-1 snap-x snap-mandatory custom-scrollbar scroll-smooth" id="tracker-grid">
+                            <!-- 由 JS 一次性渲染全部 9 周卡片，实现丝滑左右滑动切换效果 -->
                         </div>
                     </div>
 
@@ -335,25 +367,35 @@
 
     </div>
 
-    <!-- 🌟 全新设计：每次打卡随机触发的元气鼓励弹窗 (全自动平滑关闭) -->
-    <div id="encouragement-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-animeDark/80 backdrop-blur-sm pointer-events-none opacity-0 transition-all duration-300 hidden">
+    <!-- 🌟 全新设计：每次打卡随机触发的元气抽奖弹窗 (手动关闭版本) -->
+    <div id="encouragement-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-animeDark/80 backdrop-blur-sm opacity-0 transition-all duration-300 hidden pointer-events-none">
         <div id="encouragement-card" class="bg-white border-4 border-animeDark p-6 rounded-[2rem] shadow-neobrutalismLg text-center flex flex-col items-center justify-center max-w-sm w-full transform scale-90 transition-all duration-300 relative overflow-hidden">
             <!-- 能量波纹底板 -->
             <div class="absolute -top-6 -left-6 w-16 h-16 bg-animeYellow opacity-20 rounded-full blur-xl"></div>
             <div class="absolute -bottom-6 -right-6 w-16 h-16 bg-animePink opacity-20 rounded-full blur-xl"></div>
             
-            <!-- 动态微动画展现区 -->
-            <div id="encourage-svg-container" class="w-32 h-32 flex items-center justify-center mb-4 text-animePink">
-                <!-- SVG 将在此处注入 -->
+            <!-- 燃力抽奖标题 -->
+            <h3 id="encourage-title" class="text-2xl font-black text-animeDark tracking-tight text-stroke">🎯 补给抽取中...</h3>
+            
+            <!-- 动态微动画展现区 (抽奖轮播展示) -->
+            <div id="encourage-svg-container" class="w-32 h-32 flex items-center justify-center my-2 text-animePink">
+                <!-- SVG/Emoji 动态在此处注入 -->
             </div>
             
-            <!-- 燃力称号与文案 -->
-            <h3 id="encourage-title" class="text-2xl font-black text-animeDark tracking-tight text-stroke">元气爆发！</h3>
-            <p id="encourage-msg" class="text-sm text-slate-600 font-bold mt-2 leading-relaxed px-2"></p>
+            <!-- 抽中奖品的名字与文案 -->
+            <div id="prize-reveal-zone" class="hidden transition-all duration-300">
+                <h4 id="prize-name" class="text-xl font-black text-animePink tracking-tight text-stroke"></h4>
+                <p id="encourage-msg" class="text-xs text-slate-600 font-bold mt-2 leading-relaxed px-2 mb-4"></p>
+            </div>
+
+            <!-- 手动关闭按钮 -->
+            <button id="close-prize-btn" onclick="closeLuckyDraw()" class="w-full py-3 bg-animePink hover:bg-pink-600 text-white font-black rounded-xl border-2 border-animeDark shadow-neobrutalismSm hover:translate-y-[-2px] transition-all hidden active:scale-95">
+                🌟 收下奖励，继续冲刺！
+            </button>
             
             <!-- 热血徽章 -->
-            <div class="mt-4 px-4 py-1.5 bg-animeYellow text-animeDark font-black text-xs rounded-full border-2 border-animeDark shadow-neobrutalismSm rotate-[-2deg]">
-                🏃‍♀️ 突破3分20秒 功力+1 !
+            <div id="reward-badge" class="mt-4 px-4 py-1.5 bg-animeYellow text-animeDark font-black text-xs rounded-full border-2 border-animeDark shadow-neobrutalismSm rotate-[-2deg]">
+                🏃‍♀️ 努力训练的美味犒劳！
             </div>
         </div>
     </div>
@@ -421,7 +463,7 @@
                 badge: "当前任务重点：有氧大心脏 + 关节激活",
                 duration: "周期：第 1 - 3 周",
                 title: "第一阶段：基础心肺与平衡底子构建",
-                desc: "这一阶段的绝对速度不是第一追求，重点在于能够不停下、均匀呼吸地完成有氧跑。配合大步距慢速楼梯，先把膝盖和踝关节周围的小肌群激活，预防由于直接上高强度导致胫骨酸痛。",
+                desc: "这一阶段的绝对速度不是第一追求，重点在于能够不停下、均匀呼吸地完成有氧跑。配合大步距慢速楼梯，先把膝盖 and 踝关节周围的小肌群激活，预防由于直接上高强度导致胫骨酸痛。",
                 tue: "2000米轻快慢跑<br><span class='text-animePink font-extrabold'>匀速，呼吸均匀</span>",
                 thu: "慢速单阶爬楼<br><span class='text-animePurple font-extrabold'>15层 × 2组</span>",
                 sat: "100米大步幅冲<br><span class='text-animeCyan font-extrabold'>6组 (体感90%力)</span>"
@@ -477,21 +519,24 @@
             }
         };
 
-        // 少女运动专属打卡金句库
-        const animeEncouragements = [
-            { title: "美少女气场爆棚！", msg: "今天的训练汗水，都会化作你在跑道上飞驰的魔法燃料！安安太棒啦！" },
-            { title: "乳酸大作战大胜利！", msg: "双腿感觉酸胀？这正是大腿肌肉在悄悄重组、变得更强韧的标志！" },
-            { title: "撕裂风阻的跑速！", msg: "摆臂像刀锋般利落，步伐像小羚羊般灵动！你刚才冲线的一幕帅极了！" },
-            { title: "肺活量能量储蓄+100！", msg: "吸气、呼气、稳扎稳打！每一米坚实的步伐，都在缩短你与3分20秒的距离！" },
-            { title: "黄金营养补充时刻！", msg: "完美收工！在接下来的30分钟内补充蛋白，你的肌肉正在渴望成长呢！" }
+        // 5 种专属随机美味奖品：冰激淋、水溶C、果汁、酸奶、点一杯
+        const PRIZES = [
+            { name: "🍦 冰激淋", emoji: "🍦", desc: "今日份的热量克星！冰凉甜美，让运动后发热的身心瞬间得到终极治愈！" },
+            { name: "🍋 水溶C", desc: "酸甜解渴担当！满满维生素C补充，一口下去，感觉全身疲劳细胞都重新被唤醒啦！", emoji: "🍋" },
+            { name: "🍹 果汁", desc: "天然能量瓶！富含健康的天然果糖与电解质，是安安跑完步最清爽的元气补给！", emoji: "🍹" },
+            { name: "🥛 酸奶", desc: "黄金蛋白动力！饱满丝滑的口感，能超速修复受损 of 肌纤维，好喝又无负担！", emoji: "🥛" },
+            { name: "☕ 点一杯", desc: "今日特许犒劳！今天你可以自由挑选并点一杯自己最爱的特色饮品（无论是奶茶、咖啡还是清新果茶），奖励自己挥洒汗水的执着与不断突破极限的勇敢！", emoji: "☕" }
         ];
 
         let trackerState = JSON.parse(localStorage.getItem('girl_800m_tracker')) || Array(totalWeeks * daysPerWeek).fill(false);
+        let isProgrammaticScroll = false; // 防抖滑轨同步标志位
+        let scrollTimeout;
 
         window.onload = function() {
-            renderTracker();
-            switchPhase(1);
+            renderAllWeeks(); // 初始化一次性渲染完整的九周打卡格
+            switchPhase(1);   // 页签和滑轨视图默认选中并切至第一阶段
             updateProgressBar();
+            setupScrollListener(); // 绑定横向滑动探测监听器
         };
 
         // 1. 起跑哨声与 8-bit 和弦合成器
@@ -500,7 +545,6 @@
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 if (!audioCtx) return;
                 
-                // 第一声：清脆起跑
                 const osc1 = audioCtx.createOscillator();
                 const gain1 = audioCtx.createGain();
                 osc1.type = 'triangle';
@@ -513,73 +557,55 @@
                 gain1.connect(audioCtx.destination);
                 osc1.start();
                 osc1.stop(audioCtx.currentTime + 0.28);
-                
-                // 第二声：星光亮起
-                setTimeout(() => {
-                    const osc2 = audioCtx.createOscillator();
-                    const gain2 = audioCtx.createGain();
-                    osc2.type = 'sine';
-                    osc2.frequency.setValueAtTime(1046.50, audioCtx.currentTime); // C6
-                    osc2.frequency.exponentialRampToValueAtTime(1567.98, audioCtx.currentTime + 0.08); // G6
-                    gain2.gain.setValueAtTime(0.08, audioCtx.currentTime);
-                    gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.22);
-                    
-                    osc2.connect(gain2);
-                    gain2.connect(audioCtx.destination);
-                    osc2.start();
-                    osc2.stop(audioCtx.currentTime + 0.22);
-                }, 80);
             } catch (e) {
                 console.warn('Audio contexts need gesture authorization.');
             }
         }
 
-        // 2. 切换核心训练模块
-        function switchPhase(phaseNum) {
-            currentPhase = phaseNum;
-            const data = phaseData[phaseNum];
-            
-            document.querySelectorAll('.phase-tab').forEach(tab => {
-                tab.className = "phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl text-slate-600 hover:text-animeDark transition-all min-h-[48px] flex items-center justify-center active:scale-95";
-            });
-            const activeTab = document.getElementById(`tab-${phaseNum}`);
-            activeTab.className = `phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl text-white transition-all min-h-[48px] flex items-center justify-center active:scale-95 ${data.themeColor}`;
-
-            const board = document.getElementById('phase-board');
-            board.className = `${data.boardBg} anime-border rounded-2xl p-4 shadow-neobrutalism flex-grow flex flex-col justify-between transition-all duration-300`;
-
-            const badge = document.getElementById('phase-badge');
-            badge.innerText = data.badge;
-            badge.className = `px-3 py-1 text-xs font-bold rounded-full transition-colors duration-500 w-fit ${data.themeBgLight} ${data.themeText}`;
-
-            document.getElementById('phase-duration').innerText = data.duration;
-            
-            const title = document.getElementById('phase-title');
-            title.innerText = data.title;
-            title.className = `text-lg font-black transition-colors duration-500 ${data.themeText}`;
-            
-            document.getElementById('phase-desc').innerText = data.desc;
-            
-            document.getElementById('schedule-tue').innerHTML = data.tue;
-            document.getElementById('schedule-thu').innerHTML = data.thu;
-            document.getElementById('schedule-sat').innerHTML = data.sat;
-
-            highlightWeeksForPhase(phaseNum);
+        // 抽中大奖时的胜利琶音
+        function playRevealFanfare() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (!audioCtx) return;
+                
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 完美大和弦
+                notes.forEach((freq, index) => {
+                    setTimeout(() => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                        
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 0.35);
+                    }, index * 80);
+                });
+            } catch (e) {
+                console.warn('Reveal sound play blocked.');
+            }
         }
 
-        // 3. 渲染高触感、宽间距、44px 的打卡面板 (重点修改 2)
-        function renderTracker() {
+        // 2. 一次性加载所有的打卡网格
+        function renderAllWeeks() {
             const grid = document.getElementById('tracker-grid');
             grid.innerHTML = '';
-            
+
             for (let week = 1; week <= totalWeeks; week++) {
+                const phaseOfThisWeek = Math.ceil(week / 3);
+                
                 const weekContainer = document.createElement('div');
-                weekContainer.className = "flex flex-col space-y-2 bg-white border-2 border-animeDark p-3 rounded-2xl text-center shadow-neobrutalismSm relative transition-all";
+                // 平移滑动支持：采用 snap-start 提供横向指尖惯性对齐，配合 min-width 宽适度设计，横竖屏下都极度宽敞舒适
+                weekContainer.className = `flex-1 min-w-[215px] sm:min-w-[245px] snap-start flex flex-col space-y-3 bg-white border-2 border-slate-200 p-3 sm:p-4 rounded-2xl text-center shadow-sm relative transition-all duration-300`;
                 weekContainer.id = `week-box-${week}`;
                 
                 const label = document.createElement('span');
-                label.className = "text-[11px] font-black text-slate-400 block";
-                label.innerText = `Week ${week}`;
+                label.id = `week-label-${week}`;
+                label.className = `text-[11px] sm:text-xs font-black text-slate-400 uppercase tracking-wider block`;
+                label.innerText = `Week ${week} (${phaseOfThisWeek === 1 ? '筑基' : phaseOfThisWeek === 2 ? '蜕变' : '冲刺'})`;
                 weekContainer.appendChild(label);
 
                 const daysRow = document.createElement('div');
@@ -590,13 +616,13 @@
                     const isChecked = trackerState[globalIdx];
                     
                     const dayBtn = document.createElement('button');
-                    // 完全满足 44px * 44px 的高精度防误触打卡按钮
-                    dayBtn.className = `w-11 h-11 rounded-xl border-2 border-animeDark text-xs font-black flex items-center justify-center transition-all active:scale-95 cursor-pointer ${
+                    dayBtn.id = `day-btn-${globalIdx}`;
+                    dayBtn.className = `w-11 h-11 sm:w-12 sm:h-12 rounded-xl border-2 border-animeDark text-xs sm:text-sm font-black flex items-center justify-center transition-all active:scale-95 cursor-pointer ${
                         isChecked 
                             ? 'bg-emerald-400 text-animeDark rotate-3 shadow-neobrutalismSm font-black' 
                             : 'bg-slate-50 text-slate-400 hover:bg-slate-200 hover:text-slate-600'
                     }`;
-                    dayBtn.innerHTML = isChecked ? '<i class="fa-solid fa-check"></i>' : (day + 1);
+                    dayBtn.innerHTML = isChecked ? '<i class="fa-solid fa-check text-base"></i>' : `D${day + 1}`;
                     dayBtn.title = `第${week}周 - 训练日${day + 1}`;
                     dayBtn.onclick = () => toggleDay(globalIdx);
                     
@@ -608,74 +634,195 @@
             }
         }
 
-        // 4. 执行打卡并激发动画 overlay (重点修改 3)
+        // 3. 切换训练阶段（带横向指尖滑轴 Smooth 动画效果）
+        function switchPhase(phaseNum, fromScroll = false) {
+            currentPhase = phaseNum;
+            const data = phaseData[phaseNum];
+            
+            // 更新顶部控制页签状态
+            document.querySelectorAll('.phase-tab').forEach(tab => {
+                tab.className = "phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl text-slate-600 hover:text-animeDark transition-all min-h-[48px] flex items-center justify-center active:scale-95";
+            });
+            const activeTab = document.getElementById(`tab-${phaseNum}`);
+            if (activeTab) {
+                activeTab.className = `phase-tab flex-1 py-3 text-xs sm:text-sm font-black text-center rounded-xl text-white transition-all min-h-[48px] flex items-center justify-center active:scale-95 ${data.themeColor}`;
+            }
+
+            // 板块文本与二次元背景板霓虹切换
+            const board = document.getElementById('phase-board');
+            if (board) {
+                board.className = `${data.boardBg} anime-border rounded-2xl p-4 shadow-neobrutalism flex-grow flex flex-col justify-between transition-all duration-300`;
+            }
+
+            const badge = document.getElementById('phase-badge');
+            if (badge) {
+                badge.innerText = data.badge;
+                badge.className = `px-3 py-1 text-xs font-bold rounded-full transition-colors duration-500 w-fit ${data.themeBgLight} ${data.themeText}`;
+            }
+
+            const duration = document.getElementById('phase-duration');
+            if (duration) duration.innerText = data.duration;
+            
+            const title = document.getElementById('phase-title');
+            if (title) {
+                title.innerText = data.title;
+                title.className = `text-lg font-black transition-colors duration-500 ${data.themeText}`;
+            }
+            
+            const desc = document.getElementById('phase-desc');
+            if (desc) desc.innerText = data.desc;
+            
+            const tue = document.getElementById('schedule-tue');
+            if (tue) tue.innerHTML = data.tue;
+            const thu = document.getElementById('schedule-thu');
+            if (thu) thu.innerHTML = data.thu;
+            const sat = document.getElementById('schedule-sat');
+            if (sat) sat.innerHTML = data.sat;
+
+            // 动态更改网格高亮
+            highlightWeeksForPhase(phaseNum);
+
+            // 触发打卡面板横滑过渡：如果是点击页签触发，则通过 JS 让滑轨顺滑滚动至目标首周
+            if (!fromScroll) {
+                isProgrammaticScroll = true; // 开启防冲突锁
+                const targetWeekId = `week-box-${(phaseNum - 1) * 3 + 1}`;
+                const targetEl = document.getElementById(targetWeekId);
+                const grid = document.getElementById('tracker-grid');
+                if (targetEl && grid) {
+                    const targetLeft = targetEl.offsetLeft - grid.offsetLeft - 8;
+                    grid.scrollTo({
+                        left: targetLeft,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 等待浏览器平滑滚动完成后自动释放锁
+                    setTimeout(() => {
+                        isProgrammaticScroll = false;
+                    }, 800);
+                }
+            }
+        }
+
+        // 4. 高亮当前阶段的打卡周，淡化其余阶段
+        function highlightWeeksForPhase(phaseNum) {
+            for (let w = 1; w <= totalWeeks; w++) {
+                const el = document.getElementById(`week-box-${w}`);
+                const label = document.getElementById(`week-label-${w}`);
+                const phaseOfThisWeek = Math.ceil(w / 3);
+                
+                if (phaseOfThisWeek === phaseNum) {
+                    const data = phaseData[phaseNum];
+                    el.className = `flex-1 min-w-[215px] sm:min-w-[245px] snap-start flex flex-col space-y-3 bg-white border-3 ${data.themeBorder} p-3 sm:p-4 rounded-2xl text-center shadow-neobrutalism relative transition-all duration-300 scale-[1.02] ring-4 ${data.themeRing} opacity-100`;
+                    if (label) {
+                        label.className = `text-[11px] sm:text-xs font-black ${data.themeText} uppercase tracking-wider block`;
+                    }
+                } else {
+                    // 非当前活跃阶段：智能缩减尺寸并淡化，为屏幕留出空间
+                    el.className = "flex-1 min-w-[215px] sm:min-w-[245px] snap-start flex flex-col space-y-3 bg-white border-2 border-slate-200 p-3 sm:p-4 rounded-2xl text-center shadow-sm relative transition-all duration-300 opacity-50 scale-95";
+                    if (label) {
+                        label.className = "text-[11px] sm:text-xs font-black text-slate-400 uppercase tracking-wider block";
+                    }
+                }
+            }
+        }
+
+        // 5. 绑定滑轨左右滑手势探测监听（实现反向高亮页签）
+        function setupScrollListener() {
+            const grid = document.getElementById('tracker-grid');
+            if (!grid) return;
+            
+            grid.addEventListener('scroll', () => {
+                if (isProgrammaticScroll) return; // 拦截页签自带的滚动触发
+                
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    handleGridScroll();
+                }, 80);
+            });
+        }
+
+        // 探测当前滑轨中心/左侧视口距离最近的 Week 卡片，并自适应高亮顶部 Phase 标签
+        function handleGridScroll() {
+            const grid = document.getElementById('tracker-grid');
+            if (!grid) return;
+            
+            const scrollLeft = grid.scrollLeft;
+            const gridOffsetLeft = grid.offsetLeft;
+            
+            let bestWeek = 1;
+            let minDiff = Infinity;
+            
+            for (let w = 1; w <= totalWeeks; w++) {
+                const el = document.getElementById(`week-box-${w}`);
+                if (el) {
+                    const diff = Math.abs(el.offsetLeft - gridOffsetLeft - scrollLeft);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        bestWeek = w;
+                    }
+                }
+            }
+            
+            // 完美投射：Week 1-3 -> Phase 1，4-6 -> Phase 2，7-9 -> Phase 3
+            const targetPhase = Math.ceil(bestWeek / 3);
+            if (targetPhase !== currentPhase) {
+                switchPhase(targetPhase, true); // true 参数代表是从滑动中反向高亮，避免再次发起 smoothScroll
+            }
+        }
+
+        // 6. 执行打卡并激发抽奖（单点精准更新按钮样式，防全局重画阻断滑动体验）
         function toggleDay(index) {
             const wasChecked = trackerState[index];
             trackerState[index] = !trackerState[index];
             localStorage.setItem('girl_800m_tracker', JSON.stringify(trackerState));
             
-            renderTracker();
-            updateProgressBar();
-            highlightWeeksForPhase(currentPhase);
+            const btn = document.getElementById(`day-btn-${index}`);
+            if (btn) {
+                btn.className = `w-11 h-11 sm:w-12 sm:h-12 rounded-xl border-2 border-animeDark text-xs sm:text-sm font-black flex items-center justify-center transition-all active:scale-95 cursor-pointer ${
+                    trackerState[index] 
+                        ? 'bg-emerald-400 text-animeDark rotate-3 shadow-neobrutalismSm font-black' 
+                        : 'bg-slate-50 text-slate-400 hover:bg-slate-200 hover:text-slate-600'
+                }`;
+                btn.innerHTML = trackerState[index] ? '<i class="fa-solid fa-check text-base"></i>' : `D${(index % daysPerWeek) + 1}`;
+            }
             
-            // 只有在从未打卡状态切换到打卡成功时，才会触发鼓励特效
+            updateProgressBar();
+            
+            // 只有在未打卡状态切换到已打卡时，才触发补给抽奖
             if (!wasChecked) {
-                playAthleticEncourageSound();
-                triggerDynamicEncouragement();
-                triggerConfetti();
+                try {
+                    playAthleticEncourageSound(); 
+                } catch (e) {
+                    console.warn('音频播放被浏览器策略限制:', e);
+                }
+                
+                try {
+                    triggerLuckyDraw();
+                } catch (e) {
+                    console.error('抽奖模块触发失败:', e);
+                }
             }
         }
 
-        // 5. 随机生成跑步少女主题的微 SVG 动画并自动关闭
-        function triggerDynamicEncouragement() {
+        // 7. 核心逻辑：元气抽奖弹窗 (1.5秒滚动抽奖 -> 出现手动关闭按钮 -> 等待用户确认)
+        function triggerLuckyDraw() {
             const overlay = document.getElementById('encouragement-overlay');
             const card = document.getElementById('encouragement-card');
             const svgContainer = document.getElementById('encourage-svg-container');
             const titleElem = document.getElementById('encourage-title');
+            const prizeZone = document.getElementById('prize-reveal-zone');
+            const prizeName = document.getElementById('prize-name');
             const msgElem = document.getElementById('encourage-msg');
+            const closeBtn = document.getElementById('close-prize-btn');
+            const rewardBadge = document.getElementById('reward-badge');
             
-            // 随机抽选一句中肯文案
-            const randIdx = Math.floor(Math.random() * animeEncouragements.length);
-            const data = animeEncouragements[randIdx];
-            titleElem.innerText = data.title;
-            msgElem.innerText = data.msg;
+            // 恢复初始抽奖滚动状态，隐藏手动关闭按钮和底部徽章
+            titleElem.innerText = "🎯 补给抽取中...";
+            prizeZone.classList.add('hidden');
+            closeBtn.classList.add('hidden');
+            rewardBadge.classList.add('hidden');
             
-            // 4个元气满满的赛道手绘 SVG 动效库
-            const svgs = [
-                // 1. 速度跑鞋羽翼 (风驰电翼)
-                `<svg class="w-24 h-24 animate-bounce" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 70 L35 70 L40 55 L75 55 L85 70 L20 70 Z" fill="#FF5E97" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M40 55 L45 35 L65 35 L60 55" fill="#FFE0CC" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M48 40 L54 46 M50 46 L56 52" stroke="#1E1B29" stroke-width="3" stroke-linecap="round"/>
-                    <polygon points="15,40 18,45 15,50 12,45" fill="#FFD214" stroke="#1E1B29" stroke-width="1.5"/>
-                    <polygon points="80,30 83,33 80,36 77,33" fill="#00F0FF" stroke="#1E1B29" stroke-width="1.5"/>
-                </svg>`,
-                // 2. 极速冲刺萌版安安 (魔力冲线)
-                `<svg class="w-24 h-24 animate-[pulse_1s_infinite]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 50 Q50 35 90 50" stroke="#FF5E97" stroke-width="8" stroke-linecap="round" class="animate-pulse"/>
-                    <circle cx="50" cy="40" r="14" fill="#FFE0CC" stroke="#1E1B29" stroke-width="3"/>
-                    <path d="M38 32 Q50 20 62 32" fill="#FFD214" stroke="#1E1B29" stroke-width="2"/>
-                    <path d="M45 38 Q47 36 49 38" stroke="#1E1B29" stroke-width="2" fill="none"/>
-                    <path d="M51 38 Q53 36 55 38" stroke="#1E1B29" stroke-width="2" fill="none"/>
-                    <polygon points="50,10 53,20 63,20 55,27 58,37 50,30 42,37 45,27 37,20 47,20" fill="#FFD214" stroke="#1E1B29" stroke-width="2" class="animate-spin" style="transform-origin: 50px 25px;"/>
-                </svg>`,
-                // 3. 强心脏有氧火焰 (燃烧有氧)
-                `<svg class="w-24 h-24 animate-bounce" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 85 C15 55 15 25 50 15 C85 25 85 55 50 85 Z" fill="#7B2CBF" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M50 75 C25 50 25 30 50 25 C75 30 75 50 50 75 Z" fill="#FF5E97" stroke="#1E1B29" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M30 20 L35 10 M70 20 L65 10" stroke="#00F0FF" stroke-width="3" stroke-linecap="round"/>
-                </svg>`,
-                // 4. 终点王者金牌勋章 (荣耀加冕)
-                `<svg class="w-24 h-24 animate-[spin_3s_linear_infinite]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M35 30 L20 80 L40 75 Z" fill="#FF5E97" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M65 30 L80 80 L60 75 Z" fill="#00F0FF" stroke="#1E1B29" stroke-width="4" stroke-linejoin="round"/>
-                    <circle cx="50" cy="45" r="22" fill="#FFD214" stroke="#1E1B29" stroke-width="4"/>
-                    <text x="50" y="53" font-family="'Fredoka', sans-serif" font-weight="900" font-size="24" fill="#1E1B29" text-anchor="middle">1</text>
-                </svg>`
-            ];
-            svgContainer.innerHTML = svgs[Math.floor(Math.random() * svgs.length)];
-            
-            // 展示 Overlay
+            // 展示 Overlay 并配合 Neo 缩放效果
             overlay.classList.remove('hidden');
             setTimeout(() => {
                 overlay.classList.remove('opacity-0');
@@ -683,50 +830,95 @@
                 card.classList.remove('scale-90');
                 card.classList.add('scale-100');
             }, 30);
-            
-            // 2.5 秒后自行消退、顺滑淡出、释放下层点击权
+
+            // 1. 快速滚动动画：交替改变显示的Emoji图标
+            let spinCount = 0;
+            const spinInterval = setInterval(() => {
+                const tempPrize = PRIZES[spinCount % PRIZES.length];
+                svgContainer.innerHTML = `
+                    <div class="text-6xl animate-bounce transform rotate-[-8deg] filter drop-shadow-[3px_3px_0px_#1E1B29]">
+                        ${tempPrize.emoji}
+                    </div>
+                `;
+                spinCount++;
+            }, 80);
+
+            // 2. 1.5 秒后结算大奖并允许手动关闭
             setTimeout(() => {
-                overlay.classList.add('opacity-0');
-                overlay.classList.add('pointer-events-none');
-                card.classList.remove('scale-100');
-                card.classList.add('scale-90');
+                clearInterval(spinInterval);
                 
-                setTimeout(() => {
-                    overlay.classList.add('hidden');
-                }, 300);
-            }, 2500);
+                // 随机抽取最终奖品之一
+                const finalPrize = PRIZES[Math.floor(Math.random() * PRIZES.length)];
+                
+                // 播放中奖音效 (安全保护)
+                try {
+                    playRevealFanfare();
+                } catch(e) {
+                    console.warn(e);
+                }
+
+                // 爆发五彩屑 (安全保护，防止未加载 confetti 库时抛错导致后续渲染卡死)
+                try {
+                    triggerConfetti();
+                } catch(e) {
+                    console.warn('Confetti 动效被拦截或未加载成功:', e);
+                }
+                
+                // 渲染大奖卡片
+                titleElem.innerText = "🎉 恭喜抽中奖品！";
+                svgContainer.innerHTML = `
+                    <div class="relative flex flex-col items-center">
+                        <div class="absolute inset-0 bg-animeYellow/30 rounded-full scale-125 animate-ping opacity-60"></div>
+                        <div class="text-7xl animate-[bounce_1s_infinite] filter drop-shadow-[4px_4px_0px_#1E1B29] relative z-10">
+                            ${finalPrize.emoji}
+                        </div>
+                    </div>
+                `;
+                
+                prizeName.innerText = finalPrize.name;
+                msgElem.innerText = finalPrize.desc;
+                prizeZone.classList.remove('hidden');
+
+                // 显露“手动关闭”按钮及徽章
+                closeBtn.classList.remove('hidden');
+                rewardBadge.classList.remove('hidden');
+
+            }, 1500);
         }
 
-        // 6. 彩屑特效
+        // 手动关闭抽奖弹窗
+        function closeLuckyDraw() {
+            const overlay = document.getElementById('encouragement-overlay');
+            const card = document.getElementById('encouragement-card');
+            
+            overlay.classList.add('opacity-0');
+            overlay.classList.add('pointer-events-none');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-90');
+            
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
+        // 8. 彩屑特效 (加入了 typeof 判断，绝对防崩溃)
         function triggerConfetti() {
-            confetti({
-                particleCount: 120,
-                spread: 75,
-                origin: { y: 0.6 }
-            });
-        }
-
-        // 7. 高亮显示本阶段涵盖的周度卡片
-        function highlightWeeksForPhase(phaseNum) {
-            for (let w = 1; w <= totalWeeks; w++) {
-                const el = document.getElementById(`week-box-${w}`);
-                if (el) {
-                    el.className = "flex flex-col space-y-2 bg-white border-2 border-slate-200 p-3 rounded-2xl text-center shadow-sm relative transition-all";
+            try {
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 120,
+                        spread: 75,
+                        origin: { y: 0.6 }
+                    });
+                } else {
+                    console.warn('confetti 库未定义或网络被拦截，已优雅跳过粒子动画。');
                 }
-            }
-
-            const startWeek = (phaseNum - 1) * 3 + 1;
-            const endWeek = startWeek + 2;
-            const data = phaseData[phaseNum];
-            for (let w = startWeek; w <= endWeek; w++) {
-                const el = document.getElementById(`week-box-${w}`);
-                if (el) {
-                    el.className = `flex flex-col space-y-2 bg-white border-3 ${data.themeBorder} p-3 rounded-2xl text-center shadow-neobrutalism relative transition-all scale-[1.02] ring-4 ${data.themeRing}`;
-                }
+            } catch (error) {
+                console.error('彩带粒子抛出错误:', error);
             }
         }
 
-        // 8. 进度率计算
+        // 9. 进度率计算
         function updateProgressBar() {
             const checkedCount = trackerState.filter(Boolean).length;
             const percentage = Math.round((checkedCount / trackerState.length) * 100);
@@ -740,7 +932,7 @@
             }
         }
 
-        // 9. 侧边手办特写切换
+        // 10. 侧边手办特写切换
         function showDetail(actionKey) {
             const box = document.getElementById('tip-box');
             const title = document.getElementById('tip-title');
@@ -758,18 +950,18 @@
             }, 300);
         }
 
-        // 10. 重置打卡
+        // 11. 重置打卡
         function resetTracker() {
             if (confirm('确认要重置安安这九周所有的打卡轨迹吗？')) {
                 trackerState = Array(totalWeeks * daysPerWeek).fill(false);
                 localStorage.setItem('girl_800m_tracker', JSON.stringify(trackerState));
-                renderTracker();
+                renderAllWeeks(); // 重置打卡卡片
+                switchPhase(currentPhase); // 重新跳转高亮当前阶段
                 updateProgressBar();
-                highlightWeeksForPhase(currentPhase);
             }
         }
 
-        // 11. 实战沙盘模拟测试
+        // 12. 实战沙盘模拟测试
         function triggerSimulatedTest() {
             document.getElementById('test-modal').classList.remove('hidden');
             
